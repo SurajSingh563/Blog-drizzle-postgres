@@ -13,7 +13,7 @@ export function getErrorMessage(error: unknown): string {
 	let message: string;
 
 	if (error instanceof ZodError) {
-		message = error.errors[0].message;
+		message = error.issues[0].message;
 	} else if (error instanceof AuthError) {
 		message = error.cause?.err?.message || "Unknown authorization error";
 	} else if (error instanceof Error) {
@@ -56,3 +56,15 @@ export function toast(response: unknown) {
 export async function wait(duration: number = 0) {
 	return new Promise((resolve) => setTimeout(resolve, duration));
 }
+
+
+
+
+
+
+
+
+
+
+
+

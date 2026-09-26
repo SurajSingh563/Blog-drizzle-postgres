@@ -37,3 +37,11 @@ yarn-error.log*
 next-env.d.ts
 
 db-data
+
+
+# env files (contain secrets like DATABASE_URL)
+
+
+.env.development.local
+.env.test.local
+.env.production.local
