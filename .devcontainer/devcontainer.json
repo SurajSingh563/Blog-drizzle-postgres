@@ -1,0 +1,31 @@
+{
+  "name": "Blog Drizzle Postgres Dev",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+
+  "forwardPorts": [3000, 5433],
+  "portsAttributes": {
+    "3000": {
+      "label": "Next.js App",
+      "onAutoForward": "openPreview"
+    },
+    "5433": {
+      "label": "Postgres"
+    }
+  },
+
+  "postCreateCommand": "cp .env.example .env && echo \"AUTH_SECRET=$(openssl rand -base64 32)\" >> .env && npm install && docker compose up -d && sleep 5 && npm run db:migrate",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss"
+      ]
+    }
+  }
+}
